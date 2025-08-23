@@ -5,6 +5,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
+    [SerializeField] private InteractionDetector interactionDetector;
 
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 5f;    
