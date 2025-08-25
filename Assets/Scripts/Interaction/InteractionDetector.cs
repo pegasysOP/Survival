@@ -7,7 +7,9 @@ public class InteractionDetector : MonoBehaviour
     [Header("Detection Settings")]
     [SerializeField] private float detectionRadius = 2f;
     [SerializeField] private LayerMask interactableLayerMask = -1;
-    
+
+    [SerializeField] private bool showInteractZoneGizmo = false;
+
     private List<IInteractable> nearbyInteractables = new List<IInteractable>();
     private IInteractable currentInteractable;
     
@@ -67,6 +69,9 @@ public class InteractionDetector : MonoBehaviour
     
     private void OnDrawGizmosSelected()
     {
+        if (!showInteractZoneGizmo)
+            return;
+
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
     }
