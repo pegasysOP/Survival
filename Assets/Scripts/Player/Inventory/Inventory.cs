@@ -26,7 +26,7 @@ public class Inventory
         else
             items[itemData.itemId] = new InventoryItem { itemData = itemData, quantity = quantity };
 
-        Debug.Log($"Added <b>{quantity}</b> x <b>{itemData.itemId}</b> to inventory.");
+        Debug.Log($"Added <b>{quantity} x {itemData.itemId}</b> to inventory.");
 
         return true;
     }
@@ -51,7 +51,7 @@ public class Inventory
         if (items[itemId].quantity == 0)
             items.Remove(itemId);
 
-        Debug.Log($"Removed <b>{quantity}</b> x <b>{itemId}</b> from inventory.");
+        Debug.Log($"Removed <b>{quantity} x {itemId}</b> from inventory.");
 
         return true;
     }

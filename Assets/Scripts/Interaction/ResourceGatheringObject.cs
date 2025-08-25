@@ -58,15 +58,19 @@ public class ResourceGatheringObject : InteractableObject
         foreach (ResourceDrop resourceDrop in resourceDrops)
         {
             if (resourceDrop.ShouldDrop())
-                OnResourceDropped(resourceDrop.resourceType, resourceDrop.GetRandomAmount(), interactor);
+                OnResourceDropped(resourceDrop.itemData, resourceDrop.GetRandomAmount(), interactor);
         }
     }
     
-    protected virtual void OnResourceDropped(ResourceType resourceType, int amount, GameObject interactor)
+    protected virtual void OnResourceDropped(ItemData itemData, int quantity, GameObject interactor)
     {
-        Debug.Log($"Dropped {amount}x {resourceType.name}");
-
-        // TODO: add to inventory here
+        if (interactor.TryGetComponent<Player>(out Player player))
+        {
+            if (player.Inventory != null)
+            {
+                player.Inventory.AddItem(itemData, quantity);
+            }
+        }
     }
     
     protected virtual void PlayHitEffect()
